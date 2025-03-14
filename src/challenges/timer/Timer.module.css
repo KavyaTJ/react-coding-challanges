@@ -1,0 +1,61 @@
+
+
+.timerContainer {
+    display: flex;
+    width: 100vw;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background-color: #222;
+    color: white;
+    text-align: center;
+
+
+}
+
+.timerTitle {
+    font-size: 2rem;
+    margin-bottom: 20px;
+}
+
+.timerCircle {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.timerDisplay {
+    font-size: 2rem;
+}
+
+.timerButton {
+    margin-top: 20px;
+    padding: 10px 20px;
+    font-size: 1rem;
+    border: none;
+    background-color: blue;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+@media (max-width: 600px) {
+    .timerCircle {
+        width: 80px;
+        height: 80px;
+    }
+    
+    .timerDisplay {
+        font-size: 1.5rem;
+    }
+
+    .timerButton {
+        padding: 8px 16px;
+        font-size: 0.9rem;
+    }
+}
