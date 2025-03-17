@@ -34,17 +34,37 @@ function Timer() {
 
   const handleTimer = () => setIsActive(!isActive);
 
+  const handleAdd = () => {
+    setMinutes(minutes + 5);  
+  }
+
+  const handleReset =()=>{
+    setMinutes(5);
+    setSeconds(0);
+    setIsActive(false);
+  }
+
   return (
     <div className={styles.timerContainer}>
-      <h2 className={styles.timerTitle}>Beautiful Timer</h2>
+       <div className={styles.timerInnerContainer}>
+      <h2 className={styles.timerTitle}>Timer</h2>
       <div className={styles.timerCircle}>
         <h3 className={styles.timerDisplay}>
           {minutes}:{seconds < 10 ? `0${seconds}` : seconds}
         </h3>
       </div>
+      <div className={styles.buttonContainer}>
       <button onClick={handleTimer} className={styles.timerButton}>
         {isActive ? "Stop" : "Start"}
       </button>
+      <button onClick={handleAdd} className={styles.timerButton}>
+        + Add 5 minutes
+      </button>
+      <button onClick={handleReset} className={styles.timerButton}>
+     Reset
+      </button>
+      </div>
+      </div>
     </div>
   );
 }
