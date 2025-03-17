@@ -54,11 +54,12 @@ function Timer() {
         </h3>
       </div>
       <div className={styles.buttonContainer}>
-      <button onClick={handleTimer} className={styles.timerButton}>
-        {isActive ? "Stop" : "Start"}
-      </button>
+    
       <button onClick={handleAdd} className={styles.timerButton}>
         + Add 5 minutes
+      </button>
+      <button onClick={handleTimer} className={styles.timerButton}>
+        {isActive ? "Stop" : "Start"}
       </button>
       <button onClick={handleReset} className={styles.timerButton}>
      Reset
