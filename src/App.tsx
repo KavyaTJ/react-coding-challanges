@@ -1,6 +1,7 @@
 import { BrowserRouter as Router, Routes, Route, Link, Outlet } from "react-router-dom";
 import Accordion from "./challenges/accordion/Accordion";
-import Timer from "./challenges/timer/timer";
+import Timer from "./challenges/timer/Timer";
+import Todo from "./challenges/todo/Todo";
 
 // Layout component (contains header/nav)
 function Layout() {
@@ -11,6 +12,7 @@ function Layout() {
         <ul>
           <li><Link to="/accordion">Accordion</Link></li>
           <li><Link to="/timer">Timer</Link></li>
+          <li><Link to="/todo">To Do</Link></li>
         </ul>
       </nav>
       <Outlet />
@@ -26,6 +28,8 @@ export default function App() {
         </Route>
         <Route path="/accordion" element={<Accordion />} />
         <Route path="/timer" element={<Timer />} />
+        <Route path="/todo" element={<Todo />} />
+
 
 
       </Routes>
