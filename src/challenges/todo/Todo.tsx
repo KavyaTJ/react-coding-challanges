@@ -16,6 +16,8 @@ interface TodoState {
 function Todo() {
     const [text,setText]=useState('')
     const [todos,setTodos]=useState<string[]>([])
+    const [editIndex, setEditIndex] = useState<number | null>(null);
+  const [editText, setEditText] = useState("");
    
 
     const handleText = (e: React.ChangeEvent<HTMLInputElement>): void => {
@@ -29,26 +31,58 @@ function Todo() {
         setTodos([...todos, text]);
         setText('');
     }
+    const handleEdit=(index:any)=>{
+      setEditIndex(index)
+      setEditText(todos[index])
+    }
+
+    const handleSave =()=>{
+     if(editIndex !==null){
+      const updatedTodos=todos.map((item,index)=>
+      index=== editIndex ? editText :item)
+      setTodos(updatedTodos)
+      setEditIndex(null)
+      setEditText('')
+     }
+    }
   return (
-    <div>
-      <TextField id="outlined-basic" variant="outlined" 
-      value={text}
-      onChange={handleText}/>
-      <Button 
-      onClick={handleAdd}
-      variant="contained">Add</Button>
-      <div>
-      {todos.map((item)=>{
-        return(
-        <List>
-          <ListItem disablePadding>
-            {item}
+ <div>
+      <TextField
+        id="outlined-basic"
+        variant="outlined"
+        value={text}
+        onChange={handleText}
+      />
+      <Button onClick={handleAdd} variant="contained">
+        Add
+      </Button>
+
+      <List>
+        {todos.map((item, index) => (
+          <ListItem key={index}>
+            {editIndex === index ? (
+              <TextField
+                value={editText}
+                onChange={(e) => setEditText(e.target.value)}
+              />
+            ) : (
+              <ListItem>{item}</ListItem>
+            )}
+            {editIndex === index ? (
+              <Button onClick={handleSave} variant="contained">
+                Save
+              </Button>
+            ) : (
+              <Button onClick={() => handleEdit(index)} variant="contained">
+                Edit
+              </Button>
+            )}
           </ListItem>
-      
-        </List>)})}
-      </div>
+        ))}
+      </List>
     </div>
-  )
+  );
+
 }
 
 export default Todo
