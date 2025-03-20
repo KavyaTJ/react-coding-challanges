@@ -48,6 +48,11 @@ function Todo() {
       setEditText('')
      }
     }
+
+    const handleDelete =(index:number)=>{
+      const updatedToDo=todos.filter((_,i)=>i!==index)
+      setTodos(updatedToDo)
+    }
     return (
       <Container
 
@@ -143,6 +148,14 @@ function Todo() {
                   Edit
                 </Button>
               )}
+              <Button
+                  onClick={() => handleDelete(index)}
+                  variant="contained"
+                  color="secondary"
+                  sx={{ marginLeft: "10px", fontWeight: "bold", textTransform: "none",backgroundColor:'red' }}
+                >
+                  Delete
+                </Button>
             </ListItem>
           ))}
         </List>
